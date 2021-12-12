@@ -14,4 +14,4 @@
 建立连接过程
 
 
-
+![image](https://github.com/julyAndSunday/IM/readme_image/建立连接.png)
