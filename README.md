@@ -11,7 +11,12 @@
 | IM-common | 工具包                                    |
 
 
-建立连接过程
-![image](https://mini-tao.oss-cn-guangzhou.aliyuncs.com/%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png?versionId=CAEQERiBgMDi1qiy7RciIDVhZGU0NDI5ZjkxMjQwMmRhNzNlMTJiY2Y4ODYyZTM2)
+1.建立连接过程
+<div align="center">
+<image src="https://mini-tao.oss-cn-guangzhou.aliyuncs.com/%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png?versionId=CAEQERiBgMDi1qiy7RciIDVhZGU0NDI5ZjkxMjQwMmRhNzNlMTJiY2Y4ODYyZTM2" alt="image" width="700px"/>
+</div>
 
-
+2.消息转发过程
+<div align="center">
+<image src="https://mini-tao.oss-cn-guangzhou.aliyuncs.com/chat.png?versionId=CAEQERiBgMCLrsCy7RciIDYyZmMwMDE4MGI3ZTQ0ZTNiNzEwY2EyMjcyNDEzYzBj" alt="image" width="700px"/>
+</div>
