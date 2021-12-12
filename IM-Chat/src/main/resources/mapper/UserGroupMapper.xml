@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.chat.mapper.UserGroupMapper">
+  <resultMap id="BaseResultMap" type="com.github.common.entity.UserGroup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="join_time" jdbcType="TIMESTAMP" property="joinTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, group_id, join_time
+  </sql>
+
+    <select id="selectCountByGroupId" resultType="java.lang.Integer">
+      select count(id) from user_group where group_id = #{groupId}
+    </select>
+  <select id="selectUserIdByGroupId" resultType="java.lang.Integer">
+    select user_id from user_group where group_id = #{groupId}
+  </select>
+
+</mapper>

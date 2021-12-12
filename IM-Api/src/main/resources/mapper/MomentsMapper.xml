@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.api.mapper.MomentsMapper">
+  <resultMap id="BaseResultMap" type="com.github.common.entity.Moments">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="imgs" jdbcType="VARCHAR" property="imgs" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, content, imgs, likes, `date`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from moments
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+    <select id="selectByUserId" resultType="com.github.common.entity.Moments">
+      select * from moments where user_id = #{userId}
+    </select>
+  <select id="selectFriendsMoments" resultType="com.github.common.entity.Moments">
+     select m.* from relation r
+      left join moments m
+      on r.friend_id = m.user_id
+      where r.user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from moments
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.github.common.entity.Moments" useGeneratedKeys="true">
+    insert into moments (user_id, content, imgs, 
+      likes, `date`)
+    values (#{userId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR}, 
+      #{likes,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.github.common.entity.Moments" useGeneratedKeys="true">
+    insert into moments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="imgs != null">
+        imgs,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null">
+        #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.common.entity.Moments">
+    update moments
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null">
+        imgs = #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="date != null">
+        `date` = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.common.entity.Moments">
+    update moments
+    set user_id = #{userId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      imgs = #{imgs,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=INTEGER},
+      `date` = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.api.mapper.OfflineMsgMapper">
+  <resultMap id="BaseResultMap" type="com.github.common.entity.OfflineMsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="from_id" jdbcType="INTEGER" property="fromId" />
+    <result column="to_id" jdbcType="INTEGER" property="toId" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <delete id="deleteMsgsByUserId">
+    delete  from offline_msg where to_id = #{userId} and id &lt;= #{lastMsgId}
+  </delete>
+  <select id="selectMsgsByUserId" resultType="com.github.common.entity.OfflineMsg">
+    select * from offline_msg where to_id = #{userId}
+  </select>
+
+</mapper>

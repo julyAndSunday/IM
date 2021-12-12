@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.api.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.github.common.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="last_login" jdbcType="TIMESTAMP" property="nickname"/>
+    </resultMap>
+    <insert id="addFriend">
+      insert into relation (user_id, friend_id) values(#{userId},#{friendId})
+    </insert>
+    <update id="updateLastLogin">
+        update user set last_login = #{date} where id = #{userId}
+    </update>
+    <select id="selectByUsername" resultType="com.github.common.entity.User">
+        select * from user where username = #{username}
+    </select>
+    <select id="selectIdByUsername" resultType="java.lang.Integer">
+        select id from user where username = #{username}
+    </select>
+    <select id="selectFriends" resultType="com.github.common.entity.User">
+        select u.id,u.username,u.nickname,u.icon from user u
+        inner join relation r
+        on u.id = r.friend_id
+        where r.user_id = #{id}
+    </select>
+    <select id="selectByUsernameNoWithPassword" resultType="com.github.common.entity.User">
+        select id,username,nickname,icon from user where username like #{username}
+    </select>
+    <select id="selectLastLoginTime" resultType="java.util.Date">
+        select last_login from user where id = #{userId}
+    </select>
+</mapper>

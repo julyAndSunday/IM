@@ -1,0 +1,17 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    #数据源基本配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://120.79.220.182:3306/IM?useunicode=true&characterEncoding=utf8
+    username: root
+    password: abc987
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.github.common.entity
+  configuration:
+    map-underscore-to-camel-case: true
