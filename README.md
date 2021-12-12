@@ -12,6 +12,6 @@
 
 
 建立连接过程
-![image](https://github.com/julyAndSunday/IM/blob/master/readme_image/%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.png)
+![image](https://github.com/julyAndSunday/IM/blob/master/readme_image/a.jpg)
 
 
